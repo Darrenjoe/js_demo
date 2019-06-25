@@ -17,7 +17,31 @@
  * @return {number}
  */
 var calPoints = function(ops) {
-    
+    var num_arr = [];
+    ops.forEach((item, index) => {
+      if (item == "C") {
+        num_arr.pop();
+      } else {
+        num_arr.push(item);
+      }
+    });
+    var sum_arr = [];
+    num_arr.forEach((item, index) => {
+      if (item !== "D" && item !== "+") {
+        sum_arr.push(item);
+      }
+      if (item == "D") {
+        sum_arr.push(Number(sum_arr[index - 1]) * 2);
+      }
+      if (item == "+") {
+        sum_arr.push(Number(sum_arr[index - 1]) + Number(sum_arr[index - 2]));
+      }
+    });
+    var sum = 0;
+    sum_arr.forEach(item => {
+      sum += Number(item);
+    });
+    return sum;
 };
 
 var arr = ["5","2","C","D","+"];
