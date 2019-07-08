@@ -46,7 +46,7 @@ var minDeletionSize = function(A) {
   });
   for (let i = 0, len = arr[0].length; i < len; i++) {
     for (let j = 0, len_j = arr.length - 1; j < len_j; j++) {
-      if (arr[j][i].charCodeAt() >= arr[j + 1][i].charCodeAt()) {
+      if (arr[j][i].charCodeAt() > arr[j + 1][i].charCodeAt()) {
         count++;
         break;
       }
