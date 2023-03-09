@@ -31,13 +31,12 @@
  * @return {number}
  */
 var minimumRecolors = function (blocks, k) {
-  const target = new Array(k).fill("B").join("");
-  if (blocks.includes(target)) return 0;
-  let res = blocks.length;
+  let res = Number.MAX_SAFE_INTEGER;
 
   for (let i = 0; i <= blocks.length - k; i++) {
-    const count = blocks.slice(i, k + i).split("W").length - 1;
-    res = Math.min(res, count);
+    const len = blocks.slice(i, k + i).split("W").length - 1;
+    res = Math.min(res, len);
+    if (res === 0) return 0;
   }
   return res;
 };
